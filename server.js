@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const connectToDatabase = require('./src/Config/db')
+const { connectToDatabase } = require('./src/Config/db')
 const port = process.env.port || 3000
 
 const dbConnect = async () => {
@@ -13,8 +13,6 @@ const dbConnect = async () => {
 };
 
 dbConnect();
-
-
 
 
 app.listen(port, () => {

@@ -20,5 +20,8 @@ let connectToDatabase = async () => {
     }
 };
 
+module.exports = {
+    sequelize,
+    connectToDatabase
+};
 
-module.exports = connectToDatabase;
