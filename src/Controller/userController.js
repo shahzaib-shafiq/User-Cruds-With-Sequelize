@@ -1,7 +1,9 @@
 const User = require('../Model/UserModel')
 const bcrypt = require('bcrypt');
+var jwt = require('jsonwebtoken');
+require('dotenv').config()
 const {
-    userInputValidation
+    userInputValidation, userLoginValidation
 } = require("../utils/userValidation");
 
 exports.registerUser = async (req, res) => {
@@ -45,9 +47,62 @@ exports.registerUser = async (req, res) => {
 
 }
 
-exports.loginUser = async () => {
+exports.LoginUser = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+
+        console.log(req.body);
+        const LoginValidation = userLoginValidation(req.body);
+        if (!LoginValidation) {
+            return res.status(400).json({ status: false, message: validationError });
+        }
+
+        const user = await User.findOne({ where: { email } });
+
+        if (!user) {
+            return res.status(401).json({
+                status: false,
+                message: "Auth Error",
+            });
+        }
+
+        const passwordCheck = await bcrypt.compare(password, user.password);
+        if (!passwordCheck) {
+            return res
+                .status(401)
+                .json({ status: false, message: "Invalid Email or Password" });
+        }
 
 
+        let token;
+        try {
+            //Creating jwt token
+            token = jwt.sign(
+                {
+                    userId: user.userId,
+                    email: user.email,
+                },
+                // console.log(process.env.JWT_SECRET),
+                process.env.JWT_SECRET,
+                { expiresIn: "12h" }
+            );
+        } catch (err) {
+            console.log(err);
+            const error = new Error("Error! Something went wrong.");
+            return next(error);
+        }
 
-
-}
+        res.status(200).json({
+            success: true,
+            data: {
+                email: user.email,
+                token: token,
+            },
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: "Login Failed",
+            error,
+        });
+    }
+};

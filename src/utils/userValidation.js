@@ -26,3 +26,26 @@ exports.userInputValidation = async (data) => {
 
     return null;
 };
+
+exports.userLoginValidation = async (data) => {
+    const { email } = data
+    if (
+
+        !email ||
+        email === null ||
+        email === undefined
+    ) {
+        return "Enter Correct";
+    }
+
+    var validRegex =
+        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    //console.log(emailAddress);
+
+    console.log("validation", data);
+    if (!validRegex.test(email)) {
+        return "Enter a valid email address";
+    }
+
+    return null;
+}

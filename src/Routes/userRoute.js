@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const { registerUser, loginUser } = require('../Controller/userController')
+const { registerUser, LoginUser } = require('../Controller/userController')
 
 router.post("/signup", registerUser);
-router.post("/login", loginUser);
+router.post("/login", LoginUser);
 // router.patch("/updateUser/:id", verifyToken, updateUser);
 // router.patch("/updatePassword/:id", verifyToken, updatePassword);
 // router.get("fetchAllUsers", verifyToken, fetchAllUsers);
