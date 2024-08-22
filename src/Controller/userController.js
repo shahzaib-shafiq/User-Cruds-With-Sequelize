@@ -84,7 +84,7 @@ exports.LoginUser = async (req, res) => {
                 },
                 // console.log(process.env.JWT_SECRET),
                 process.env.JWT_SECRET,
-                { expiresIn: "12h" }
+                { expiresIn: process.env.EXPIRES_IN }
             );
         } catch (err) {
             console.log(err);
