@@ -1,6 +1,6 @@
 const { sequelize } = require('../Config/db');
 
-const { DataTypes } = sequelize.DataTypes
+const { DataTypes } = require("sequelize")
 const User = sequelize.define(
     'User',
     {
@@ -21,7 +21,7 @@ const User = sequelize.define(
         },
         age: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: true
         },
         email: {
             type: DataTypes.STRING,
@@ -45,5 +45,16 @@ const User = sequelize.define(
         timestamps: true,
     },
 );
-
+// Sync the model with the database, checking if the table already exists
+// User.sync({ alter: true }) // you can use force true instead of alter to drop the table and create new
+//     .then((result) => {
+//         if (result.changed) {
+//             console.log("Admin table updated successfully.");
+//         } else {
+//             console.log("Admin table already exists and is up to date.");
+//         }
+//     })
+//     .catch((err) => {
+//         console.error("Error synchronizing Admin table:", err);
+//     });
 module.exports = User

@@ -1,4 +1,5 @@
 const Sequelize = require("sequelize");
+
 require('dotenv').config()
 
 const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
@@ -11,8 +12,10 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
 let connectToDatabase = async () => {
     try {
         await sequelize.authenticate();
-        // Sync the tables here if necessary
         console.log('Connecting to DB');
+        // Sync the tables here if necessary
+
+
         return sequelize; // Return the sequelize instance for further use
     } catch (error) {
         console.error('Unable to connect to the database. Details:', error.message);

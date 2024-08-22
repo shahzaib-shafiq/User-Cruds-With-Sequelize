@@ -1,7 +1,12 @@
 const express = require('express')
 const app = express()
 const { connectToDatabase } = require('./src/Config/db')
+const userRoute = require('./src/Routes/userRoute')
 const port = process.env.port || 3000
+var bodyParser = require('body-parser')
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }))
+
 
 const dbConnect = async () => {
     try {
@@ -15,6 +20,8 @@ const dbConnect = async () => {
 dbConnect();
 
 
+
+app.use('/api', userRoute);
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
