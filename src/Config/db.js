@@ -8,7 +8,6 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
     port: process.env.DB_PORT || 3306
 });
 
-
 let connectToDatabase = async () => {
     try {
         await sequelize.authenticate();

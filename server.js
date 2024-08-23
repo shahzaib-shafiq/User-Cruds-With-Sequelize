@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 const { connectToDatabase } = require('./src/Config/db')
 const userRoute = require('./src/Routes/userRoute')
+const AluminiRoute = require('./src/Routes/AluminiRoute')
+
 const port = process.env.port || 3000
 var bodyParser = require('body-parser')
 app.use(express.json());
@@ -22,6 +24,7 @@ dbConnect();
 
 
 app.use('/api', userRoute);
+app.use('/api', AluminiRoute);
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
