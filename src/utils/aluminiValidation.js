@@ -27,3 +27,12 @@ exports.AluminiInputValidation = async (data) => {
 
     return null;
 };
+
+exports.aluminiValideImage = async (img) => {
+
+    if (!img || img === undefined || img === null) {
+        return "Image Not Added"
+    }
+
+    return null;
+}

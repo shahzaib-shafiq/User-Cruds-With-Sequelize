@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+
 const { connectToDatabase } = require('./src/Config/db')
 const userRoute = require('./src/Routes/userRoute')
 const AluminiRoute = require('./src/Routes/AluminiRoute')
