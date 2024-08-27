@@ -57,15 +57,15 @@ const Alumni = sequelize.define(
   }
 );
 // Sync the model with the database, checking if the table already exists
-Alumni.sync({ alter: true }) // you can use force true instead of alter to drop the table and create new
-  .then((result) => {
-    if (result.changed) {
-      console.log("Alumni table updated successfully.");
-    } else {
-      console.log("Alumni table already exists and is up to date.");
-    }
-  })
-  .catch((err) => {
-    console.error("Error synchronizing Alumni table:", err);
-  });
+// Alumni.sync({ alter: true }) // you can use force true instead of alter to drop the table and create new
+//   .then((result) => {
+//     if (result.changed) {
+//       console.log("Alumni table updated successfully.");
+//     } else {
+//       console.log("Alumni table already exists and is up to date.");
+//     }
+//   })
+//   .catch((err) => {
+//     console.error("Error synchronizing Alumni table:", err);
+//   });
 module.exports = Alumni;
