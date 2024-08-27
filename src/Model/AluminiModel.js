@@ -11,6 +11,10 @@ const Alumni = sequelize.define(
             primaryKey: true
 
         },
+        RegistrationNum: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         firstName: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -39,6 +43,14 @@ const Alumni = sequelize.define(
         Image: {
             type: DataTypes.STRING,
             allowNull: true
+        },
+        department: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        session: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
     },
     {
