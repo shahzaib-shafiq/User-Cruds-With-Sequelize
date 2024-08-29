@@ -5,6 +5,10 @@ const { connectToDatabase } = require("./src/Config/db");
 const userRoute = require("./src/Routes/userRoute");
 const AluminiRoute = require("./src/Routes/AluminiRoute");
 const JobRoute = require("./src/Routes/JobsRoutes");
+const CourseRoutes = require("./src/Routes/CourseRoutes");
+const DepartmentRoutes = require("./src/Routes/DepartmentRoutes");
+const InstructorRoutes = require("./src/Routes/InstructorRoutes");
+const StudentRoutes = require("./src/Routes/StudentRoutes");
 
 const port = process.env.port || 3000;
 var bodyParser = require("body-parser");
@@ -27,6 +31,10 @@ dbConnect();
 app.use("/api", userRoute);
 app.use("/api", AluminiRoute);
 app.use("/api", JobRoute);
+app.use("/api", CourseRoutes);
+app.use("/api", DepartmentRoutes);
+app.use("/api", InstructorRoutes);
+app.use("/api", StudentRoutes);
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
