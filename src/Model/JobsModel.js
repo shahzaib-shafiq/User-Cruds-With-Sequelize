@@ -38,10 +38,10 @@ const Jobs = sequelize.define(
     },
     AlumniId: {
       type: DataTypes.INTEGER,
-      references: {
-        model: "Alumni",
-        key: "AlumniId",
-      },
+      // references: {
+      //   model: "Alumni",
+      //   key: "AlumniId",
+      // },
       allowNull: false,
     },
     Title: {
@@ -75,16 +75,16 @@ const Jobs = sequelize.define(
 //     console.error("Error synchronizing Jobs table:", err);
 //   });
 
-Jobs.sync({ alter: true }) // you can use force true instead of alter to drop the table and create new
-  .then((result) => {
-    if (result.changed) {
-      console.log("Jobs table updated successfully.", result);
-    } else {
-      console.log("Jobs table already exists and is up to date.");
-    }
-  })
-  .catch((err) => {
-    console.error("Error synchronizing Jobs table:", err);
-  });
+// Jobs.sync({ alter: true }) // you can use force true instead of alter to drop the table and create new
+//   .then((result) => {
+//     if (result.changed) {
+//       console.log("Jobs table updated successfully.", result);
+//     } else {
+//       console.log("Jobs table already exists and is up to date.");
+//     }
+//   })
+//   .catch((err) => {
+//     console.error("Error synchronizing Jobs table:", err);
+//   });
 
 module.exports = Jobs;

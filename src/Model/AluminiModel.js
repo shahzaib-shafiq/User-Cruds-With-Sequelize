@@ -128,11 +128,11 @@ const Alumni = sequelize.define(
 );
 
 // Sync the Alumni model
-Alumni.sync({ alter: true })
-  .then(() => {
-    console.log("Alumni table updated successfully.");
-  })
-  .catch((err) => {
-    console.error("Error synchronizing Alumni table:", err);
-  });
+// Alumni.sync({ alter: true })
+//   .then(() => {
+//     console.log("Alumni table updated successfully.");
+//   })
+//   .catch((err) => {
+//     console.error("Error synchronizing Alumni table:", err);
+//   });
 module.exports = Alumni;
