@@ -15,7 +15,7 @@ const dbConnect = async () => {
   try {
     await connectToDatabase();
     console.log("Database connected successfully.");
-    await associations();
+    //await associations();
     console.log("Associations Created");
   } catch (error) {
     console.error("Failed to connect to database:", error);

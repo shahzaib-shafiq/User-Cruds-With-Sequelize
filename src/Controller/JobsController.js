@@ -3,7 +3,7 @@ const Job = require("../Model/JobsModel");
 const { JobValidation } = require("../utils/JobsValidation");
 
 exports.addAluminiJob = async (req, res) => {
-  const { Title, company, city, salary } = req.body;
+  const { AlumniId, Title, company, city, salary } = req.body;
 
   const aluminiJob = req.body;
   const validateJob = JobValidation(aluminiJob);
@@ -12,5 +12,9 @@ exports.addAluminiJob = async (req, res) => {
   }
   const addJob = await Job.create(aluminiJob);
 
-  res.status(200).json({ message: "Job Added", jobDetails: addJob });
+  if (addJob) {
+    res.status(200).json({ message: "Job Added", jobDetails: addJob });
+  } else {
+    res.status(200).json({ message: "Error in Adding Job" });
+  }
 };
