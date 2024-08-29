@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-
+const associations = require("./src/Model/Alumini_Job_Associations");
 const { connectToDatabase } = require("./src/Config/db");
 const userRoute = require("./src/Routes/userRoute");
 const AluminiRoute = require("./src/Routes/AluminiRoute");
@@ -15,6 +15,8 @@ const dbConnect = async () => {
   try {
     await connectToDatabase();
     console.log("Database connected successfully.");
+    await associations();
+    console.log("Associations Created");
   } catch (error) {
     console.error("Failed to connect to database:", error);
   }
