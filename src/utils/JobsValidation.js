@@ -5,5 +5,5 @@ exports.JobValidation = async (data) => {
     return "All Fields Are Required";
   }
 
-  return null;
+  return true;
 };
