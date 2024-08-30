@@ -8,26 +8,38 @@ const Student = sequelize.define("student", {
     autoIncrement: true,
     primaryKey: true,
   },
-  student_name: {
+  name: {
     type: DataTypes.STRING,
-    allownull: false,
+    allowNull: false,
   },
-  phone: { type: DataTypes.STRING, allownull: false },
-  address: { type: DataTypes.STRING, allownull: false },
-  city: { type: DataTypes.STRING, allownull: false },
-  dob: { type: DataTypes.STRING, allownull: false },
+  rollNumber: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  CNIC: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  department: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  phone: { type: DataTypes.STRING, allowNull: false },
+  address: { type: DataTypes.STRING, allowNull: false },
+  city: { type: DataTypes.STRING, allowNull: false },
+  dob: { type: DataTypes.STRING, allowNull: false },
 });
 
-// Student.sync({ alter: true }) // you can use force true instead of alter to drop the table and create new
-//   .then((result) => {
-//     if (result.changed) {
-//       console.log("Jobs table updated successfully.", result);
-//     } else {
-//       console.log("Jobs table already exists and is up to date.");
-//     }
-//   })
-//   .catch((err) => {
-//     console.error("Error synchronizing Jobs table:", err);
-//   });
+Student.sync({ alter: true }) // you can use force true instead of alter to drop the table and create new
+  .then((result) => {
+    if (result.changed) {
+      console.log("Jobs table updated successfully.", result);
+    } else {
+      console.log("Jobs table already exists and is up to date.");
+    }
+  })
+  .catch((err) => {
+    console.error("Error synchronizing Jobs table:", err);
+  });
 
 module.exports = Student;

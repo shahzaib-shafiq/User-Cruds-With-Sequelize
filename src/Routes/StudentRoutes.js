@@ -5,6 +5,6 @@ const { AddStudent } = require("../Controller/StudentController");
 
 const { verifyToken } = require("../Middlewares/authentication");
 
-router.post("/addAlumini", verifyToken, upload.single("file"), AddStudent);
+router.post("/addStudent", verifyToken, AddStudent);
 
 module.exports = router;

@@ -5,6 +5,6 @@ const { AddInstructor } = require("../Controller/InstructorController");
 
 const { verifyToken } = require("../Middlewares/authentication");
 
-router.post("/addAlumini", verifyToken, upload.single("file"), AddInstructor);
+router.post("/addInstructor", verifyToken, AddInstructor);
 
 module.exports = router;
