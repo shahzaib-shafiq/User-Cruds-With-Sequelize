@@ -46,7 +46,7 @@ const Department = sequelize.define("department", {
   department_code: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true, // Optional: ensure each department has a unique code
+    unique: true,
   },
   department_name: {
     type: DataTypes.STRING,

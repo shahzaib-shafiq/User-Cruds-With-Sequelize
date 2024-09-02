@@ -13,6 +13,7 @@ const Alumni = sequelize.define(
     RegistrationNum: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     firstName: {
       type: DataTypes.STRING,
@@ -57,7 +58,7 @@ const Alumni = sequelize.define(
   }
 );
 
-// Sync the Alumni model
+//Sync the Alumni model
 // Alumni.sync({ alter: true })
 //   .then(() => {
 //     console.log("Alumni table updated successfully.");

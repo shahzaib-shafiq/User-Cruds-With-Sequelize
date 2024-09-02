@@ -82,6 +82,7 @@ const Student = sequelize.define("student", {
   email: {
     type: DataTypes.STRING,
     allowNull: false,
+    unique: true,
   },
   rollNumber: {
     type: DataTypes.STRING,
