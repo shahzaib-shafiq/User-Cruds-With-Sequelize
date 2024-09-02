@@ -20,6 +20,7 @@ exports.AddStudent = async (req, res) => {
     const Studentdata = req.body;
 
     const ValidateData = await CreateStudent(req.body);
+    console.log(ValidateData);
     if (!ValidateData) {
       return res.status(401).json({ message: "Validation Error" });
     }

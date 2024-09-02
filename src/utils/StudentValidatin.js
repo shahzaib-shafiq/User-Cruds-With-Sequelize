@@ -11,14 +11,16 @@ exports.CreateStudent = async (data) => {
     city,
     dob,
   } = data;
+
   console.log(data);
+
+  // Check if any required fields are missing
   if (
     !name ||
     !department_id ||
     !email ||
     !rollNumber ||
     !CNIC ||
-    department ||
     !phone ||
     !address ||
     !city ||
@@ -26,5 +28,7 @@ exports.CreateStudent = async (data) => {
   ) {
     return false;
   }
+
+  // If all required fields are present
   return true;
 };
