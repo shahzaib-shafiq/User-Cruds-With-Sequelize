@@ -33,8 +33,9 @@ exports.addAlumini = async (req, res) => {
       return res.status(400).json({ message: "Image is required." });
     }
 
-    const Image = file.path; // Store the full path of the uploaded image
-
+    let Image = file.path; // Store the full path of the uploaded image
+    Image = "http://localhost:9001/".concat(Image);
+    console.log(Image);
     // Check for duplicate alumni by email
     const existingAlumni = await Alumini.findOne({ where: { email } });
     if (existingAlumni) {
@@ -57,7 +58,7 @@ exports.addAlumini = async (req, res) => {
       gender,
       city,
       EmploymentStatus,
-      image: Image, // Store the full image path in the 'image' column
+      Image: Image, // Store the full image path in the 'image' column
       RegistrationNum,
       department,
       session,
