@@ -1,5 +1,6 @@
 exports.CreateCourse = async (data) => {
   const { course_code, course_name, department, Duration, prerequisite } = data;
+  console.log(course_code, course_name, department, Duration, prerequisite);
   if (
     !course_code ||
     !course_name ||
@@ -7,7 +8,8 @@ exports.CreateCourse = async (data) => {
     !Duration ||
     !prerequisite
   ) {
-    return "Enter All Required Fields";
+    return false;
   }
-  return null;
+
+  return true;
 };
