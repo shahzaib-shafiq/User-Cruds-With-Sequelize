@@ -1,3 +1,4 @@
+const { where } = require("sequelize");
 const Alumini = require("../Model/AluminiModel");
 const {
   AluminiInputValidation,
@@ -74,5 +75,39 @@ exports.addAlumini = async (req, res) => {
       message: "Server error, unable to add alumni.",
       error: error.message,
     });
+  }
+};
+
+exports.getAllAlumini = async (req, res) => {
+  try {
+    const allAlumini = await Alumini.findAll();
+
+    if (allAlumini) {
+      return res.status(200).json({
+        Alumini: allAlumini,
+      });
+    } else {
+      return res.status(401).json({ message: "Unable to Fetch the Alumini" });
+    }
+  } catch (error) {
+    return res.status(400).json({ message: error });
+  }
+};
+
+exports.getAllAluminibyId = async (req, res) => {
+  try {
+    const Aluminiid = req.params.id;
+    const findAlumini = await Alumini.findOne({
+      where: { AlumniId: Aluminiid },
+    });
+    console.log("=============================", findAlumini);
+
+    if (findAlumini) {
+      return res.status(200).json({ Alumini: findAlumini });
+    } else {
+      return res.status(401).json({ message: "Alumini Does not Exist" });
+    }
+  } catch (error) {
+    return res.status(401).json({ message: error });
   }
 };

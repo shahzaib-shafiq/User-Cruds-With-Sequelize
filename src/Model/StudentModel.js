@@ -82,7 +82,6 @@ const Student = sequelize.define("student", {
   email: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true,
   },
   rollNumber: {
     type: DataTypes.STRING,
@@ -114,19 +113,16 @@ const Student = sequelize.define("student", {
   },
 });
 
-// const syncModels = async () => {
-//   try {
-//     // Sync the models with the database
-//     await Student.sync({ alter: true }); // or use force: true to drop and recreate the table
-
-//     console.log("models synchronized successfully.");
-//   } catch (err) {
-//     console.error("Error synchronizing models:", err);
-//   }
-// };
-
-// // Call the arrow function to synchronize models
-// syncModels();
-
+Student.sync({ alter: true }) // you can use force true instead of alter to drop the table and create new
+  .then((result) => {
+    if (result.changed) {
+      console.log("Jobs table updated successfully.", result);
+    } else {
+      console.log("Jobs table already exists and is up to date.");
+    }
+  })
+  .catch((err) => {
+    console.error("Error synchronizing Jobs table:", err);
+  });
 // Export the model
 module.exports = Student;

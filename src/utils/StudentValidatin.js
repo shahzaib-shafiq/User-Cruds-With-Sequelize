@@ -11,7 +11,7 @@ exports.CreateStudent = async (data) => {
     city,
     dob,
   } = data;
-
+  console.log(data);
   if (
     !name ||
     !department_id ||
