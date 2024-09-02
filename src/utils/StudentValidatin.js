@@ -12,6 +12,7 @@ exports.CreateStudent = async (data) => {
     !city ||
     !dob
   ) {
+    return false;
   }
-  return null;
+  return true;
 };
