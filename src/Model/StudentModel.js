@@ -74,6 +74,7 @@ const Student = sequelize.define("student", {
     //   model: Department, // Reference to the Department model
     //   key: "department_id",
     // },
+    foreignKey: true,
   },
   name: {
     type: DataTypes.STRING,
@@ -91,10 +92,10 @@ const Student = sequelize.define("student", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  department: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
+  // department: {
+  //   type: DataTypes.STRING,
+  //   allowNull: false,
+  // },
   phone: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -113,16 +114,16 @@ const Student = sequelize.define("student", {
   },
 });
 
-Student.sync({ alter: true }) // you can use force true instead of alter to drop the table and create new
-  .then((result) => {
-    if (result.changed) {
-      console.log("Jobs table updated successfully.", result);
-    } else {
-      console.log("Jobs table already exists and is up to date.");
-    }
-  })
-  .catch((err) => {
-    console.error("Error synchronizing Jobs table:", err);
-  });
+// Student.sync({ alter: true }) // you can use force true instead of alter to drop the table and create new
+//   .then((result) => {
+//     if (result.changed) {
+//       console.log("Jobs table updated successfully.", result);
+//     } else {
+//       console.log("Jobs table already exists and is up to date.");
+//     }
+//   })
+//   .catch((err) => {
+//     console.error("Error synchronizing Jobs table:", err);
+//   });
 // Export the model
 module.exports = Student;

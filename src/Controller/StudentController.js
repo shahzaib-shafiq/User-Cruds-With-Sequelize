@@ -25,13 +25,14 @@ exports.AddStudent = async (req, res) => {
       return res.status(401).json({ message: "Validation Error" });
     }
 
-    const dept = await Department.findOne({
-      where: { department_id: department_id },
-    });
+    // const dept = await Department.findOne({
+    //   where: { department_id: department_id },
+    // });
 
-    if (dept === null) {
-      return res.status(401).json({ message: "Department Does Not Exist" });
-    }
+    // if (dept === null) {
+    //   return res.status(401).json({ message: "Department Does Not Exist" });
+    // }
+
     const CheckDuplicateStudent = await Student.findOne({
       where: { email: email },
     });
