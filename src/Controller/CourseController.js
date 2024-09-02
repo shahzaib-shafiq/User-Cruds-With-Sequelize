@@ -1,8 +1,12 @@
+const { where } = require("sequelize");
 const Course = require("../Model/CourseModel");
 const { CreateCourse } = require("../utils/CourseValidation");
 
 exports.AddCourse = async (req, res) => {
   try {
+    const { course_code, course_name, department, Duration, prerequisite } =
+      req.body;
+
     const coursedata = req.body;
 
     // Validate data
@@ -10,9 +14,12 @@ exports.AddCourse = async (req, res) => {
     if (!validationErrors) {
       return res.status(400).json({ message: "Validation failed" });
     }
-
-    console.log("object");
-    // Create course in the database
+    const CheckDuplicateCourse = await Course.findOne({
+      where: { course_code: course_code },
+    });
+    if (CheckDuplicateCourse) {
+      return res.status(401).json({ message: "Course Already Exist" });
+    }
     const course = await Course.create(coursedata);
 
     // Check if course was created successfully
