@@ -14,6 +14,13 @@ const associations = async () => {
     Student.belongsTo(Department, { foreignKey: "department_id" });
     Department.hasMany(Student, { foreignKey: "department_id" });
 
+    Course.belongsTo(Department, {
+      foreignKey: "department_id",
+      as: "DepartmentId", // Changes applied here
+      onDelete: "CASCADE",
+    });
+    Department.hasMany(Course, { foreignKey: "department_id" });
+
     Course.belongsToMany(Student, { through: StudentCourse });
     Student.belongsToMany(Course, { through: StudentCourse });
   } catch (error) {

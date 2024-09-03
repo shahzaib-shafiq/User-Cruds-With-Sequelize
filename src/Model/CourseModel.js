@@ -1,12 +1,22 @@
 const { sequelize } = require("../Config/db");
 
 const { DataTypes, Model } = require("sequelize");
+const Department = require("../Model/DepartmentModel");
 
 const Course = sequelize.define("course", {
   course_id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true,
+  },
+  department_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: Department, // Reference to the Department model
+      key: "department_id",
+    },
+    foreignKey: true,
   },
   course_code: {
     type: DataTypes.STRING,

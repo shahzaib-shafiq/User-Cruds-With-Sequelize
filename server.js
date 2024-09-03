@@ -39,5 +39,5 @@ app.use("/api", StudentRoutes);
 app.use("/api", StudentCourse);
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`University App listening on port ${port}`);
 });
