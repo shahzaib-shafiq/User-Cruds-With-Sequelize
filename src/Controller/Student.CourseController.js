@@ -1,28 +1,27 @@
 const StudentCourses = require("../Model/StudentCourseModel");
-const CheckStudentCourse = require("../utils/StudentCourseValidations");
+const CreateStudentCourse = require("../utils/StudentCourseValidations"); // Correct import
 
 exports.AddStudentCourse = async (req, res) => {
   try {
     const { student_id, course_id } = req.body;
 
-    // Basic validation (this can be enhanced based on your CheckStudentCourse logic)
-    if (!student_id || !course_id) {
+    // Perform validation
+    const validationError = await CreateStudentCourse(req.body);
+
+    // Check for validation errors
+    if (!validationError) {
       return res
         .status(400)
-        .json({ message: "student_id and course_id are required" });
+        .json({ message: "Validation Error", errors: validationError });
     }
-
-    // Optionally, use CheckStudentCourse to validate the student_id and course_id
-    // const validationError = CheckStudentCourse.validate(req.body);
-    // if (validationError) {
-    //   return res.status(400).json({ message: validationError });
-    // }
 
     const studentcourseData = { student_id, course_id };
     console.log("Adding data:", studentcourseData);
 
+    // Create the record
     const savedata = await StudentCourses.create(studentcourseData);
 
+    // Respond with success
     return res.status(201).json({ message: "Data Added", data: savedata });
   } catch (error) {
     console.error("Error in Adding Data to DB:", error); // Log the actual error
