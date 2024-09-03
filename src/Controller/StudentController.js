@@ -133,7 +133,7 @@ exports.DeleteStudent = async (req, res) => {
 };
 exports.GetAllStudent = async (req, res) => {
   try {
-    const getStudents = await Student.findAll();
+    const getStudents = await Student.findAll({ include: Department });
     if (getStudents) {
       return res.status(200).json({ Students: getStudents });
     } else {
@@ -151,6 +151,7 @@ exports.GetStudentbyId = async (req, res) => {
       where: {
         student_id: Studentid,
       },
+      include: Department,
     });
 
     if (CheckStudentExistance) {
