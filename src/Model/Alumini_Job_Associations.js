@@ -3,7 +3,7 @@ const Department = require("./DepartmentModel");
 const Jobs = require("./JobsModel");
 const Student = require("./StudentModel");
 const Course = require("./CourseModel");
-// const StudentCourse = require("../Model/StudentCourseModel");
+const StudentCourse = require("../Model/StudentCourseModel");
 // console.log("associations");
 const associations = async () => {
   try {
@@ -20,5 +20,5 @@ const associations = async () => {
     console.log(error);
   }
 };
-associations();
+//associations();
 module.exports = associations;

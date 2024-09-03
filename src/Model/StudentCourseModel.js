@@ -24,12 +24,12 @@ const StudentCourses = sequelize.define(
 );
 
 // Sync the StudentCourses model
-StudentCourses.sync({ alter: true })
-  .then(() => {
-    console.log("StudentCourses table updated successfully.");
-  })
-  .catch((err) => {
-    console.error("Error synchronizing StudentCourses table:", err);
-  });
+// StudentCourses.sync({ alter: true })
+//   .then(() => {
+//     console.log("StudentCourses table updated successfully.");
+//   })
+//   .catch((err) => {
+//     console.error("Error synchronizing StudentCourses table:", err);
+//   });
 
 module.exports = StudentCourses;
