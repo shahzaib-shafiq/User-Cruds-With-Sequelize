@@ -27,10 +27,7 @@ const Course = sequelize.define("course", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  department: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
+
   Duration: { type: DataTypes.STRING, allowNull: false },
   prerequisite: { type: DataTypes.STRING, allowNull: false },
 });
